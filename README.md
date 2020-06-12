@@ -17,3 +17,7 @@ Das muss sicher bereitgestellt werden.
 Verwendet wird ein "BluePill"-Board mit angeschlossenem CAN-Transceiver an PB. 
 Ein Poti an Port PA0 (0-3.3V) und ein Taster an PA1 gegen GND.
 
+Das Projekt ist für Segger Embedded Studio:
+https://www.segger.com/downloads/embedded-studio/
+ 
+

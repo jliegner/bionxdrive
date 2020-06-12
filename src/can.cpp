@@ -77,6 +77,7 @@ void Can::Init(uint32_t baudrate, bool bStart, bool bSilent)
 
 void Can::Start()
 {
+  uCanTimeTick=0;
   CAN1->MCR &= ~CAN_MCR_INRQ;        // normal operating mode, reset INRQ
   while (CAN1->MSR & CAN_MCR_INRQ)
     ;
