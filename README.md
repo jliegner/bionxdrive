@@ -1,5 +1,6 @@
 # bionxdrive
-Demo Code um einen BionX Motor zu Drehen und Bremsen ohne weiter BionX Componenten.
+Demo Code um einen BionX Motor zum Drehen und Bremsen zu bewegen 
+ohne weiter BionX Componenten.
 
 Um einen BionX Fahrradmotor zum Drehen/Bremsen zu bewegen ist folgendes nötig:
 
