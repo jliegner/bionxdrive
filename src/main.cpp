@@ -249,8 +249,9 @@ int main(void)
     {
     debug_printf("can not read sw-version from motor!\n");
     delay_ms(200);
-    break;
+    aLed.Toggle();
     }
+  aLed.Clr();
   debug_printf("found motor with sw-vers: %x\n", (uint32_t)SwVers);
 
   // dann mit 0x6c der Gauge-Typ (bei mir 0x00)

@@ -44,7 +44,11 @@
 #include <stdarg.h>
 #include <time.h>
 
-#define debug_printf printf
+#define debug_printf(...) 
+#ifdef DEBUG
+   #undef debug_printf
+   #include "debugio.h"
+#endif   
 
 //---------------------------------------------------------------------------
 // Delay ueber DWT-CycleCounter 
