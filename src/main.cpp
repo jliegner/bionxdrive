@@ -171,13 +171,14 @@ bool ReadBionxReg(int canid, uint16_t addr, uint16_t &ret )
       ret=aMsg.data[2]<<8 | aMsg.data[3];
       return true;
       }
-    delay_us(100);
+    delay_us(100); 
     }
   return false;       
 }
 
 uint32_t uPotiAdc=0;
 int16_t  iRealLevel;
+uint8_t  uSwitch=0;
 
 #define BXID_MOTOR            0x20
 #define BXR_MOTOR_LEVEL       0x09
@@ -225,10 +226,13 @@ int main(void)
     adc=adcfilt/32;    
     uPotiAdc=adc;
 
+    uSwitch<<=1;
+    if (aSwitch.In())
+      uSwitch|=0x01;
+ 
     if (b50mSec)
-      {
-      int16_t level=0;
-      
+      {      
+      int16_t  level=0; 
       // Willkürliche Festlegung der max und min Werte damit 
       // mir das Rad nicht umfällt
       #define MAX_LEVEL 20
@@ -245,11 +249,11 @@ int main(void)
         level*=-1;
         }
 
-      if (aSwitch.In())
+      if (uSwitch==0xff)
         {
         iRealLevel=0;
         }
-      else
+      if (uSwitch==0)
         {
         // kurze Rampe fahren   
         if (iRealLevel<level)
