@@ -92,7 +92,7 @@ FULL_PRJ = $(OUTDIR)/$(PROJECT)
 SRCPP     += $(wildcard ./libs/*.cpp) 
 SRC       += $(wildcard ./libs/*.c) 
 SRCPP_DBG += ./src/main.cpp
-SRCPP_DBG += ./src/printf.cpp
+#SRCPP_DBG += ./src/printf.cpp
 SRCPP_DBG += ./src/can.cpp
 SRC       += ./system/gnu/startup_stm32f103.c
 
