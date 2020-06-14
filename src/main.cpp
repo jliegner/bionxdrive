@@ -214,7 +214,7 @@ int main(void)
   bool b50mSec=false;
   while (1)
     {
-    // Übernahme der Flags aus dem SystickHdl
+    // Uebernahme der Flags aus dem SystickHdl
     b50mSec=bTick50ms; 
     bTick50ms=false;
 
@@ -233,18 +233,18 @@ int main(void)
     if (b50mSec)
       {      
       int16_t  level=0; 
-      // Willkürliche Festlegung der max und min Werte damit 
-      // mir das Rad nicht umfällt
+      // Willkuerliche Festlegung der max und min Werte damit 
+      // mir das Rad nicht umfaellt
       #define MAX_LEVEL 20
       #define MAX_REKU  30
       if (uPotiAdc>2300)
         {
-        // Unterstützung von 0-MAX_LEVEL
+        // Unterstuetzung von 0-MAX_LEVEL
         level=((uPotiAdc-2300)*MAX_LEVEL)/(4096-2300);
         }
       if (uPotiAdc<1800)
         {
-        // Unterstützung von 0 - -MAX_REKU
+        // Bremsen/Reku von 0 - -MAX_REKU
         level=((1800-uPotiAdc)*MAX_REKU)/1800;
         level*=-1;
         }
