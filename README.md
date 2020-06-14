@@ -22,8 +22,17 @@ Mit dem Poti kann man ein Drehmoment vorgeben, Mittelstellung ist 0.
 Solange der Taster gedrückt wird, wird das eingestelte Drehmoment an den Motor als Sollwert übertragen,
 bei losgelassenem Taster wird 0 als Sollwert gesendet.
 
-
 Das Projekt ist für Segger Embedded Studio:
 https://www.segger.com/downloads/embedded-studio/
+
+Alternativ kann man das auch nur mit der gnuarm-Toolchain übersetzen. 
+Unter Windows verwende ich die windows-build-tools:
+https://github.com/gnuarmeclipse/windows-build-tools/releases
+für make u.s.w. 
+gnuarmeclipse-build-tools-win64-xxx-setup.exe 
+kann man mit die mit 7zip öffnen und binaries aus bin herauskopieren.
+
+ 
+
  
 
