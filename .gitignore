@@ -1,0 +1,15 @@
+*.lst
+*.bin
+*.map
+*.exe
+*.o
+*.hex
+*.d
+*.ind
+*.elf
+.cvs
+Output
+release
+debug
+
+
