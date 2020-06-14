@@ -9,7 +9,7 @@ Die Hauptversorgung muss von einem Akku kommen und es muss sichergestellt werden
 dass während des Bremsens/Rekuperation die Verbindung zum Akku nicht getrennt wird. 
 Anderenfalls kann die Spannung hochlaufen und den Motor sehr schnell zerstören.
 
-2. 12V fuer den Motor Elektronik
+2. 12V fuer den Motor Elektronik.
 Gemessen zieht der Motor ca. 200-250mA Strom auf der 12V Schiene. 
 Das muss sicher bereitgestellt werden.
 
