@@ -49,7 +49,6 @@ else
   OPT =     -Os
   OPT_DBG = -Os 
   OUTDIR=release
-  # CROSSWORKSFLAG=-DSTARTUP_FROM_RESET
 endif  
 
 TRGT = arm-none-eabi-
@@ -64,7 +63,7 @@ BIN  = $(CP) -O binary
 MCU  = cortex-m3
 
 # Alle Defines fuer C und C++ hier einfuegen
-DEFS +=-D__USE_CMSIS -D__NEWLIB__ $(CROSSWORKSFLAG) -DSTM32F10X_MD -DSTARTUP_FROM_RESET
+DEFS +=-D__USE_CMSIS -D__NEWLIB__ -DSTM32F10X_MD -DSTARTUP_FROM_RESET
 #-DUSE_STDPERIPH_DRIVER 
 
 # Alle Defines fuer den Assembler hier einfuegen
@@ -78,9 +77,6 @@ DLIBDIR =
 
 # alle zusaetzlichen libs 
 LIBS = 
-
-# Projekt name 
-PROJECT  = stm32f103c8-bionx
 
 # Linker script file
 LDSCRIPT = ./system/gnu/stm32f103c8.ld
