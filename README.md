@@ -25,7 +25,7 @@ bei losgelassenem Taster wird 0 als Sollwert gesendet.
 Das Projekt ist für Segger Embedded Studio:
 https://www.segger.com/downloads/embedded-studio/
 
-Alternativ kann man das auch nur mit der gnuarm-Toolchain übersetzen. 
+Alternativ kann man das auch nur mit der gnuarm-Toolchain und buildgnu.bat übersetzen. 
 Unter Windows verwende ich die windows-build-tools:
 https://github.com/gnuarmeclipse/windows-build-tools/releases
 für make u.s.w. 
