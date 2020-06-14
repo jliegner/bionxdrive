@@ -30,7 +30,7 @@ Unter Windows verwende ich die windows-build-tools:
 https://github.com/gnuarmeclipse/windows-build-tools/releases
 für make u.s.w. 
 gnuarmeclipse-build-tools-win64-xxx-setup.exe 
-kann man mit die mit 7zip öffnen und binaries aus bin herauskopieren.
+kann man mit die mit 7zip öffnen und die binaries aus bin herauskopieren.
 
  
 
