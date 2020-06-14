@@ -176,22 +176,13 @@ bool ReadBionxReg(int canid, uint16_t addr, uint16_t &ret )
   return false;       
 }
 
-uint32_t potiadc=0;
-int16_t  level=0;
+uint32_t uPotiAdc=0;
+int16_t  iRealLevel;
 
 #define BXID_MOTOR            0x20
 #define BXR_MOTOR_LEVEL       0x09
 #define BXR_MOTOR_SWVERS      0x20  
 
-uint16_t uGaugeValue;
-uint16_t uSpeed;
-int16_t  iPowerMeter;
-uint16_t uVPower;
-uint16_t uV12V;
-int16_t  iMotorTemp;
-uint16_t uMotorConditions;
-uint16_t uMotorStatus;
-int16_t  iRealLevel;
 
 int main(void)
 {
@@ -208,7 +199,7 @@ int main(void)
 
   delay_ms(50);
 
-  // Danach wird mit 0x20 der Softwarestand des Motors abgefragt (0x66 bei mir)
+  // Mit 0x20 der Softwarestand des Motors abfragen (0x66 bei mir)
   uint16_t SwVers=0;
   while (!ReadBionxReg(BXID_MOTOR, BXR_MOTOR_SWVERS, SwVers))
     {
@@ -217,7 +208,7 @@ int main(void)
     aLed.Toggle();
     }
   aLed.Clr();
-  debug_printf("found motor with sw-vers: %x\n", (uint32_t)SwVers);
+  debug_printf("found motor with sw-vers: %i\n", (uint32_t)SwVers);
 
   bool b50mSec=false;
   while (1)
@@ -232,25 +223,25 @@ int main(void)
     adcfilt-=adcfilt/32;
     adcfilt+=adc;
     adc=adcfilt/32;    
-    potiadc=adc;
+    uPotiAdc=adc;
 
     if (b50mSec)
       {
-      level=0;
+      int16_t level=0;
       
       // Willkürliche Festlegung der max und min Werte damit 
       // mir das Rad nicht umfällt
       #define MAX_LEVEL 20
       #define MAX_REKU  30
-      if (potiadc>2300)
+      if (uPotiAdc>2300)
         {
         // Unterstützung von 0-MAX_LEVEL
-        level=((potiadc-2300)*MAX_LEVEL)/(4096-2300);
+        level=((uPotiAdc-2300)*MAX_LEVEL)/(4096-2300);
         }
-      if (potiadc<1800)
+      if (uPotiAdc<1800)
         {
         // Unterstützung von 0 - -MAX_REKU
-        level=((1800-potiadc)*MAX_REKU)/1800;
+        level=((1800-uPotiAdc)*MAX_REKU)/1800;
         level*=-1;
         }
 
@@ -260,6 +251,7 @@ int main(void)
         }
       else
         {
+        // kurze Rampe fahren   
         if (iRealLevel<level)
           iRealLevel++; 
         if (iRealLevel>level)
@@ -267,7 +259,9 @@ int main(void)
         if (level==0)
           iRealLevel=0;
         }
-
+      
+      // Msg 2 mal hintereinander zum Motor senden. Wird jedenfalls 
+      // bei BionX so gemacht. 
       WriteBionxReg(BXID_MOTOR, BXR_MOTOR_LEVEL, iRealLevel);
       WriteBionxReg(BXID_MOTOR, BXR_MOTOR_LEVEL, iRealLevel);
       }
