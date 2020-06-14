@@ -45,9 +45,12 @@
 #include <time.h>
 
 #define debug_printf(...) 
+
 #ifdef DEBUG
-   #undef debug_printf
-   #include "debugio.h"
+  #ifdef __EM_STUDIO_ARM
+     #undef debug_printf
+     #include "debugio.h"
+  #endif   
 #endif   
 
 //---------------------------------------------------------------------------
